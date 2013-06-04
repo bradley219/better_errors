@@ -125,7 +125,7 @@ module BetterErrors
 
     def internal_call(env, opts)
       if opts[:oid].to_i != @error_page.object_id
-        return [200, { "Content-Type" => "text/plain; charset=utf-8" }, [JSON.dump(error: "Session expired",opts:opts)]]
+        return [200, { "Content-Type" => "text/plain; charset=utf-8" }, [JSON.dump(error: "Session expired")]]
       end
 
       env["rack.input"].rewind
