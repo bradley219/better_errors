@@ -129,9 +129,9 @@ module BetterErrors
       Rails.logger.info " "
       Rails.logger.info " "
       Rails.logger.info " "
-      if opts[:oid].to_i != @error_page.object_id
-        return [200, { "Content-Type" => "text/plain; charset=utf-8" }, [JSON.dump(error: "Session expired")]]
-      end
+      #if opts[:oid].to_i != @error_page.object_id
+      #  return [200, { "Content-Type" => "text/plain; charset=utf-8" }, [JSON.dump(error: "Session expired")]]
+      #end
 
       env["rack.input"].rewind
       response = @error_page.send("do_#{opts[:method]}", JSON.parse(env["rack.input"].read))
