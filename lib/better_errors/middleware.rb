@@ -81,6 +81,7 @@ module BetterErrors
     end
 
     def protected_app_call(env)
+      Rails.logger.info "protected_app_call env=#{env}"
       @app.call env
     rescue Exception => ex
       @error_page = @handler.new ex, env
