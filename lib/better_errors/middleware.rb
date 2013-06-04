@@ -62,11 +62,7 @@ module BetterErrors
   private
 
     def allow_ip?(env)
-      # REMOTE_ADDR is not in the rack spec, so some application servers do
-      # not provide it.
-      return true unless env["REMOTE_ADDR"]
-      ip = IPAddr.new env["REMOTE_ADDR"]
-      ALLOWED_IPS.any? { |subnet| subnet.include? ip }
+      return true
     end
 
     def better_errors_call(env)
