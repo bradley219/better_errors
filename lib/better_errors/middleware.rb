@@ -119,7 +119,15 @@ module BetterErrors
     end
 
     def internal_call(env, opts)
+      Rails.logger.info " "
+      Rails.logger.info " "
+      Rails.logger.info " "
       Rails.logger.info "opts: #{opts}"
+      Rails.logger.info "opts[:oid]: #{opts[:oid]}"
+      Rails.logger.info "@error_page.object_id = #{@error_page.object_id}"
+      Rails.logger.info " "
+      Rails.logger.info " "
+      Rails.logger.info " "
       if opts[:oid].to_i != @error_page.object_id
         return [200, { "Content-Type" => "text/plain; charset=utf-8" }, [JSON.dump(error: "Session expired")]]
       end
